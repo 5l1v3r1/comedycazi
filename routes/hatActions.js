@@ -28,6 +28,16 @@ exports.home_post_handler = function(req, res) {
         pin12_state = !pin12_state;
         setpin(12, pin12_state);
     }
+    else if (words == "safe shutdown" ){
+        child = exec('sudo shutdown -h now', // command line argument directly in string
+            function (error, stdout, stderr) {      // one easy function to capture data/errors
+                console.log('stdout: ' + stdout);
+                console.log('stderr: ' + stderr);
+                if (error !== null) {
+                    console.log('exec error: ' + error);
+                }
+            });
+    }
     else{
         child = exec('echo ' +'"' + words + '"' + ' | festival --tts', // command line argument directly in string
             function (error, stdout, stderr) {      // one easy function to capture data/errors
