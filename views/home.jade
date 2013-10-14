@@ -1,0 +1,14 @@
+extends layout
+
+block content
+    #wrapper
+        #logo
+            a(href='/')
+                img(src='/images/dildo.jpg')
+        #display
+            #login
+                form(method='post')
+                    | Submit the text you want the hat to speak
+                    div
+                        input(type='text', name='tts')
+                        input(type='submit', value='Dildo Speak')
