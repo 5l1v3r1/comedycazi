@@ -11,6 +11,8 @@
         "express": "3.4.0",
         "pi-gpio": "0.0.2",
         "jade": "*",
-        "stylus": "*"
+        "stylus": "*",
+        "speaker": "0.0.10",
+        "lame": "1.0.3"
     }
 }

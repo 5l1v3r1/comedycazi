@@ -1,0 +1,28 @@
+extends layout
+
+
+
+block content
+    #wrapper
+        #display
+            #login
+                form(method="post", enctype="multipart/form-data")
+                    input(type="file", name="sound")
+                    input(type='submit', value='Dildo sound')
+            #logo
+                img(src='/images/sexy_hair.jpg')
+            -for (var id in sounds)
+                -var sound = sounds[id]
+                table.fixed
+                    tr
+                        th Click to play #{sound}
+                        th Delete
+
+                    td
+                        div
+                            form(method='post')
+                                input(type='submit', value='Play', name='#{sound}', style="background-color:green")
+                    td
+                        div
+                            form(method='post')
+                                input(type='submit', value='Delete', name='#{sound}', style="background-color:red")

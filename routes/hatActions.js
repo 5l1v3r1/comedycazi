@@ -48,4 +48,5 @@ exports.home_post_handler = function(req, res) {
                 }
             });
     }
+    res.redirect('/');
 };

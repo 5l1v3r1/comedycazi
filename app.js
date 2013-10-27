@@ -6,6 +6,7 @@ var util = require('util'),
     child;
 
 var hatActions = require('./routes/hatActions');
+var upload = require('./routes/upload')
 var app = express();
 
 app.configure(function(){
@@ -23,6 +24,8 @@ app.configure(function(){
 
 app.get('/', hatActions.home);
 app.post('/', hatActions.home_post_handler);
+app.get('/upload', upload.upload)
+app.post('/upload', upload.upload_post_handler)
 
 http.createServer(app).listen(app.get('port'), function(){
     console.log("Express server listening on port " + app.get('port'));
