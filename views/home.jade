@@ -3,13 +3,12 @@ extends layout
 
 block content
     #wrapper
+        #display
+            form(method='post', onsubmit='this.submit(); this.reset(); return false;')
+                | Submit the text you want the hat to speak
+                div
+                    input(type='text', name='tts')
+                    input(type='submit', value='Dildo Speak')
         #logo
             a(href='/')
                 img(src='/images/dildo.jpg')
-        #display
-            #login
-                form(method='post')
-                    | Submit the text you want the hat to speak
-                    div
-                        input(type='text', name='tts')
-                        input(type='submit', value='Dildo Speak')

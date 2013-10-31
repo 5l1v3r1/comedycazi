@@ -8,21 +8,22 @@ block content
             #login
                 form(method="post", enctype="multipart/form-data")
                     input(type="file", name="sound")
-                    input(type='submit', value='Dildo sound')
+                    input.uploadButton(type='submit', value='upload dildo sound')
             #logo
                 img(src='/images/sexy_hair.jpg')
             -for (var id in sounds)
                 -var sound = sounds[id]
                 table.fixed
-                    tr
-                        th Click to play #{sound}
-                        th Delete
+                    col(width='500px')
+                    td
+                        text.soundText #{sound}
+                    td
+                        form(method='post')
+                            input.playButton(type='submit', value='Play', name='#{sound}')
+                    td
+                        form(method='post')
+                            input.deleteButton(type='submit', value='Delete', name='#{sound}')
+                    td
+                        form(method='post')
+                            input.stopButton(type='submit', value='Stop', name='#{sound}')
 
-                    td
-                        div
-                            form(method='post')
-                                input(type='submit', value='Play', name='#{sound}', style="background-color:green")
-                    td
-                        div
-                            form(method='post')
-                                input(type='submit', value='Delete', name='#{sound}', style="background-color:red")
