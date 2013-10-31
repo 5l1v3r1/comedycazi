@@ -4,11 +4,18 @@ extends layout
 block content
     #wrapper
         #display
-            form(method='post', onsubmit='this.submit(); this.reset(); return false;')
-                | Submit the text you want the hat to speak
-                div
-                    input(type='text', name='tts')
-                    input(type='submit', value='Dildo Speak')
+            table.fixed
+                col(width='500px')
+                td
+                    form(method='get', action='/upload')
+                        button.stopButton(type='submit') Uploads
+                td
+                    form(method='post', onsubmit='this.submit(); this.reset(); return false;')
+                        | Submit the text you want the hat to speak
+                        div
+                            input.textBox(type='text', name='tts')
+                            input.speakButton(type='submit', value='Dildo Speak')
+
         #logo
             a(href='/')
                 img(src='/images/dildo.jpg')

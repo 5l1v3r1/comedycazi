@@ -10,7 +10,6 @@ block content
                     input(type="file", name="sound")
                     input.uploadButton(type='submit', value='upload dildo sound')
             #logo
-                img(src='/images/sexy_hair.jpg')
             -for (var id in sounds)
                 -var sound = sounds[id]
                 table.fixed
@@ -26,4 +25,6 @@ block content
                     td
                         form(method='post')
                             input.stopButton(type='submit', value='Stop', name='#{sound}')
+
+            img(src='/images/sexy_hair.jpg')
 

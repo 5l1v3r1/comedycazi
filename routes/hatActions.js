@@ -45,5 +45,5 @@ exports.home_post_handler = function(req, res) {
                 }
             });
     }
-    res.end();
+    res.redirect('/');
 };

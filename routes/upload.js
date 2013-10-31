@@ -38,7 +38,7 @@ exports.upload_post_handler = function(req, res){
                     activeSounds[name].end();
                 }
                 activeSounds[name] = stream;
-                res.send('ok', 200)
+                res.redirect('/upload');
             }
             else if (req.body[name] == 'Delete'){
                 fs.unlink(existingPath, function(){
