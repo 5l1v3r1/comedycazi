@@ -10,7 +10,7 @@ block content
                     form(method='get', action='/upload')
                         button.stopButton(type='submit') Uploads
                 td
-                    form(method='post', onsubmit='this.submit(); this.reset(); return false;')
+                    form(method='post')
                         | Submit the text you want the hat to speak
                         div
                             input.textBox(type='text', name='tts')
