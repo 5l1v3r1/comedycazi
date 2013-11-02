@@ -21,10 +21,11 @@ block content
                             input.playButton(type='submit', value='Play', name='#{sound}')
                     td
                         form(method='post')
-                            input.deleteButton(type='submit', value='Delete', name='#{sound}')
+                            input.stopButton(type='submit', value='Stop', name='#{sound}')
                     td
                         form(method='post')
-                            input.stopButton(type='submit', value='Stop', name='#{sound}')
+                            input.deleteButton(type='submit', value='Delete', name='#{sound}')
 
-            img(src='/images/sexy_hair.jpg')
+            a(href='/')
+                img(src='/images/sexy_hair.jpg')
 

@@ -19,7 +19,7 @@ exports.upload = function(req, res) {
 
 exports.upload_post_handler = function(req, res){
 
-    if (req.files && req.files.sound && typeof req.files.sound.name == 'string' && req.files.sound.name.slice(-3) == 'mp3'){
+    if (req.files && req.files.sound && req.files.sound.name.slice(-3) == 'mp3'){
         fs.readFile(req.files.sound.path, function (err, data) {
                 var fileName = req.files.sound.name;
                 var newPath = __dirname + "/uploads/" + fileName;
@@ -38,22 +38,19 @@ exports.upload_post_handler = function(req, res){
                     activeSounds[name].end();
                 }
                 activeSounds[name] = stream;
-                res.redirect('/upload');
             }
             else if (req.body[name] == 'Delete'){
                 fs.unlink(existingPath, function(){
                     console.log('Deleted!')
-                    res.redirect('/upload');
                 })
             }
-            else if (req.body[name] == 'Stop'){
+            else if (req.body[name] == 'Stop' && activeSounds[name]){
                 activeSounds[name].end();
                 delete activeSounds[name];
-                res.redirect('/upload');
             }
-
-
         }
+
+        res.redirect('/upload');
     };
 
 };
