@@ -1,6 +1,6 @@
 var util = require('util'),
-    exec = require('child_process').exec,
-    child;
+    spawn = require('child_process').spawn,
+    mary = spawn('java', ['-cp','./lib/*:./bin', "MaryTTSTest"],  {cwd :'/Users/dayrey/Downloads/MaryTTSTest'});
 
 // var gpio = require("pi-gpio"),
 
@@ -21,29 +21,27 @@ exports.home = function(req, res) {
 //    });
 //}
 
+mary.stdout.on('data', function (data) {
+    console.log('stdout: ' + data);
+});
+
+mary.stderr.setEncoding('utf8');
+mary.stderr.on('data', function (data) {
+    console.log("THERE WAS AN ERROR")
+    console.log(data)
+
+});
 
 exports.home_post_handler = function(req, res) {
     var words = req.body.tts;
     words.replace(/\W/g, '');
     if (words == "safe shutdown" ){
-        child = exec('sudo shutdown -h now', // command line argument directly in string
-            function (error, stdout, stderr) {      // one easy function to capture data/errors
-                console.log('stdout: ' + stdout);
-                console.log('stderr: ' + stderr);
-                if (error !== null) {
-                    console.log('exec error: ' + error);
-                }
-            });
+        spawn('sudo', ['shutdown','-h', "now"]);
     }
     else{
-        child = exec('echo ' +'"' + words + '"' + ' | festival --tts', // command line argument directly in string
-            function (error, stdout, stderr) {      // one easy function to capture data/errors
-                console.log('stdout: ' + stdout);
-                console.log('stderr: ' + stderr);
-                if (error !== null) {
-                    console.log('exec error: ' + error);
-                }
-            });
+        console.log(words)
+        mary.stdin.setEncoding = 'utf-8';
+        mary.stdin.write(words + "\n")
     }
     res.redirect('/');
 };
