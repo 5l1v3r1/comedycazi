@@ -39,9 +39,12 @@ exports.home_post_handler = function(req, res) {
         spawn('sudo', ['shutdown','-h', "now"]);
     }
     else{
+
         console.log(words)
         mary.stdin.setEncoding = 'utf-8';
-        mary.stdin.write(words + "\n")
+        mary.stdin.write(words + ".\n")
+
+
     }
     res.redirect('/');
 };
