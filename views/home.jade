@@ -3,18 +3,66 @@ extends layout
 
 block content
     #wrapper
-        #display
-            table.fixed
-                col(width='500px')
-                td
-                    form(method='get', action='/upload')
-                        button.stopButton(type='submit') Uploads
-                td
-                    form(method='post')
-                        | Submit the text you want the hat to speak
-                        div
-                            input.textBox(type='text', name='tts')
-                            input.speakButton(type='submit', value='Dildo Speak')
-
         #logo
-            img(src='/images/dildo.jpg')
+
+        table.fixed(border='1')
+            col(width='500px')
+            thead
+                tr
+                    th
+                        form(method="post", enctype="multipart/form-data")
+                            input(type="file", name="sound")
+                            input.uploadButton(type='submit', value='upload dildo sound')
+                    th
+                        form(method='post')
+                            | Submit the text you want the hat to speak
+                            div
+                                input.textBox(type='text', name='tts', id="focusHere")
+                                script.
+                                    document.getElementById('focusHere').focus()
+
+
+                                input.speakButton(type='submit', value='Dildo Speak')
+            td(valign='top')
+                table
+                    -for (var id in sounds)
+                        -var sound = sounds[id]
+                        tr
+                            td
+                                text.soundText #{sound}
+                                table.fixed
+                                    td
+                                        form(method='post')
+                                            input.playButton(type='submit', value='Play', name='#{sound}')
+                                    td
+                                        form(method='post')
+                                            input.stopButton(type='submit', value='Stop', name='#{sound}')
+                                    td
+                                        form(method='post')
+                                            input.deleteButton(type='submit', value='Delete', name='#{sound}')
+            td(valign='top')
+                table
+                    -for (var id in voice_sounds)
+                        -var voice_sound = voice_sounds[id]
+                        tr
+                            td
+                                text.soundText #{voice_sound}
+                                table.fixed
+                                    td
+                                        form(method='post')
+                                            input.playButton(type='submit', value='Play', name='#{voice_sound}')
+                                    td
+                                        form(method='post')
+                                            input.deleteButton(type='submit', value='Delete', name='#{voice_sound}')
+
+
+
+
+
+
+
+        a(href='/')
+            img(src='/images/sexy_hair.jpg')
+
+
+
